@@ -1,96 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Car Rental</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HST Rental | Executive Mobility</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --ios-bg: #000000;
+            --ios-card: rgba(28, 28, 30, 0.7);
+            --ios-blue: #007AFF;
+            --ios-gold: #FFD60A;
+            --ios-red: #FF453A;
+            --glass: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background-color: var(--ios-bg);
+            color: white;
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow-x: hidden;
+            letter-spacing: -0.02em;
         }
-        /* Glassmorphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+
+        /* --- iOS Style Navigation --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid var(--border);
+            padding: 16px 0;
         }
-        header {
-            position: relative;
-            height: 100vh;
-            background: url('video-background.mp4') no-repeat center center/cover;
+
+        .nav-flex { 
+            display: flex; justify-content: space-between; 
+            align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 24px;
         }
+
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; }
+        .logo span { color: var(--ios-gold); }
+
+        /* --- Hero Section --- */
         .hero {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-video-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.4; z-index: 0;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            color: #8e8e93;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* --- Premium Buttons --- */
+        .btn-ios {
+            background: white;
+            color: black;
+            padding: 16px 32px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .btn-ios:hover { transform: scale(1.05); background: var(--ios-gold); }
+
+        /* --- Car Grid (The Apple Watch Face Look) --- */
+        .car-section { padding: 120px 0; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            padding: 0 24px;
+        }
+
+        .car-card {
+            background: var(--ios-card);
+            backdrop-filter: blur(10px);
+            border-radius: 32px; /* iOS Squircle */
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .car-card:hover {
+            border-color: var(--ios-blue);
+            background: rgba(44, 44, 46, 0.8);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .car-card:hover .car-image { transform: translateY(-10px) scale(1.05); }
+
+        .car-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+        .car-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 122, 255, 0.15);
+            color: var(--ios-blue);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .price-label { font-size: 0.9rem; color: #8e8e93; margin-bottom: 4px; }
+        .price-value { font-size: 1.5rem; font-weight: 700; color: var(--ios-gold); }
+
+        /* --- Advanced Booking Glass Panel --- */
+        .booking-panel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 38px;
+            padding: 60px;
+            border: 1px solid var(--border);
+            margin: 60px 24px;
+        }
+
+        .input-ios {
+            background: #2c2c2e;
+            border: none;
+            border-radius: 14px;
+            padding: 18px;
             color: white;
-            text-align: center;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 8px;
+            transition: ring 0.3s ease;
         }
-        .car-catalog, .testimonials, .comparison {
+
+        .input-ios:focus { box-shadow: 0 0 0 3px var(--ios-blue); }
+
+        /* --- Floating WhatsApp iOS style --- */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 64px;
+            height: 64px;
+            border-radius: 20px; /* iOS Icon Shape */
             display: flex;
-            justify-content: space-around;
-            margin: 50px 0;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 1001;
+            transition: 0.3s;
         }
-        .booking {
-            text-align: center;
-            margin: 50px 0;
+
+        .wa-float:hover { transform: scale(1.1) rotate(5deg); }
+
+        /* --- Footer --- */
+        footer { padding: 80px 24px; border-top: 0.5px solid var(--border); text-align: center; color: #8e8e93; }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            .booking-panel { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="hero">
-            <h1>Welcome to Our Car Rental Service</h1>
-            <p>Find your perfect car for any occasion!</p>
+
+    <nav>
+        <div class="nav-flex">
+            <div class="logo">HST <span>EXCLUSIVE</span></div>
+            <a href="https://wa.me/6282133883181" class="btn-ios" style="padding: 10px 20px; font-size: 0.8rem;">Contact Us</a>
         </div>
-    </header>
-    <section class="car-catalog glass">
-        <h2>Our Cars</h2>
-        <div class="car-list">
-            <div class="car-item">
-                <h3>Car Model 1</h3>
-                <p>Specs: Engine - 200 HP, Seats - 5, Price - $50/day</p>
+    </nav>
+
+    <section class="hero">
+        <div style="position:absolute; top: -10%; left: -10%; width: 40%; height: 40%; background: var(--ios-blue); filter: blur(150px); opacity: 0.2;"></div>
+        
+        <div class="hero-content">
+            <p style="text-transform: uppercase; letter-spacing: 5px; color: var(--ios-gold); margin-bottom: 10px; font-weight: 700;">Hulu Sungai Tengah</p>
+            <h1>Move in <span>Style.</span></h1>
+            <p>Standar baru penyewaan mobil premium. Bersih, Cepat, dan Berkelas.</p>
+            <a href="#catalogue" class="btn-ios">Explore Collection</a>
+        </div>
+    </section>
+
+    <section id="catalogue" class="car-section">
+        <div class="grid">
+            <div class="car-card">
+                <span class="car-tag">Most Popular</span>
+                <img src="mobil1.jpg" alt="Avanza" class="car-image">
+                <h3>Avanza Gen 3</h3>
+                <p style="color: #8e8e93; margin-bottom: 20px;">7-Seater · Manual/AT · 2024</p>
+                <div class="price-label">Daily Rate</div>
+                <div class="price-value">Rp 350.000</div>
+                <button onclick="book('Avanza 2024')" class="btn-ios" style="width:100%; margin-top: 20px; background: var(--ios-blue); color: white;">Book Now</button>
             </div>
-            <div class="car-item">
-                <h3>Car Model 2</h3>
-                <p>Specs: Engine - 150 HP, Seats - 4, Price - $40/day</p>
+
+            <div class="car-card">
+                <span class="car-tag" style="background: rgba(255, 69, 58, 0.15); color: var(--ios-red);">Premium Choice</span>
+                <img src="mobil2.jpg" alt="Innova" class="car-image">
+                <h3>Innova Reborn</h3>
+                <p style="color: #8e8e93; margin-bottom: 20px;">7-Seater · AT Luxury · Diesel</p>
+                <div class="price-label">Daily Rate</div>
+                <div class="price-value">Rp 650.000</div>
+                <button onclick="book('Innova Reborn')" class="btn-ios" style="width:100%; margin-top: 20px; background: white; color: black;">Book Now</button>
+            </div>
+
+            <div class="car-card">
+                <span class="car-tag" style="background: rgba(255, 214, 10, 0.15); color: var(--ios-gold);">City Agile</span>
+                <img src="mobil3.jpg" alt="Brio" class="car-image">
+                <h3>Honda Brio RS</h3>
+                <p style="color: #8e8e93; margin-bottom: 20px;">5-Seater · Compact · Sporty</p>
+                <div class="price-label">Daily Rate</div>
+                <div class="price-value">Rp 300.000</div>
+                <button onclick="book('Honda Brio RS')" class="btn-ios" style="width:100%; margin-top: 20px; background: var(--ios-blue); color: white;">Book Now</button>
             </div>
         </div>
     </section>
-    <section class="booking glass">
-        <h2>Book Your Car</h2>
-        <form>
-            <input type="date" required>
-            <input type="text" placeholder="Enter your Name" required>
-            <button type="submit">Book Now</button>
-        </form>
+
+    <section class="container">
+        <div class="booking-panel" id="reserve">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">Quick Reservation</h2>
+            <p style="color: #8e8e93; margin-bottom: 40px;">Lengkapi detail untuk mendapatkan kalkulasi biaya otomatis.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">SELECT UNIT</label>
+                    <select id="car" class="input-ios">
+                        <option value="350000">Toyota Avanza (350k)</option>
+                        <option value="650000">Innova Reborn (650k)</option>
+                        <option value="300000">Honda Brio RS (300k)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">DURATION (DAYS)</label>
+                    <input type="number" id="days" class="input-ios" value="1" min="1">
+                </div>
+                <div>
+                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">YOUR NAME</label>
+                    <input type="text" id="name" class="input-ios" placeholder="Enter name">
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <p style="font-size: 0.9rem; color: #8e8e93;">Estimated Total</p>
+                    <h3 id="totalDisplay" style="font-size: 2rem; color: var(--ios-gold);">Rp 350.000</h3>
+                </div>
+                <button onclick="sendWA()" class="btn-ios" style="background: white; color: black; padding: 20px 45px;">Confirm Booking</button>
+            </div>
+        </div>
     </section>
-    <section class="testimonials glass">
-        <h2>What Our Customers Say</h2>
-        <p>"Great service! Highly recommend!"</p>
-        <p>"The cars were in excellent condition!"</p>
-    </section>
-    <section class="comparison glass">
-        <h2>Compare Our Cars</h2>
-        <table>
-            <tr><th>Model</th><th>Engine</th><th>Seats</th></tr>
-            <tr><td>Car Model 1</td><td>200 HP</td><td>5</td></tr>
-            <tr><td>Car Model 2</td><td>150 HP</td><td>4</td></tr>
-        </table>
-    </section>
-    <footer class="glass">
-        <p>Contact us via WhatsApp for quick inquiries!</p>
+
+    <footer>
+        <p>&copy; 2026 HST Rental Exclusive. Crafted for the Modern Traveler.</p>
+        <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Barabai - Hulu Sungai Tengah - South Borneo</p>
     </footer>
+
+    <a href="https://wa.me/6281234567890" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Real-time calculation
+        const carInput = document.getElementById('car');
+        const daysInput = document.getElementById('days');
+        const totalDisplay = document.getElementById('totalDisplay');
+
+        function updatePrice() {
+            const total = carInput.value * daysInput.value;
+            totalDisplay.innerText = 'Rp ' + total.toLocaleString('id-ID');
+        }
+
+        carInput.addEventListener('change', updatePrice);
+        daysInput.addEventListener('input', updatePrice);
+
+        function book(carName) {
+            document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });
+            const select = document.getElementById('car');
+            for(let i=0; i < select.options.length; i++) {
+                if(select.options[i].text.includes(carName)) {
+                    select.selectedIndex = i;
+                    updatePrice();
+                    break;
+                }
+            }
+        }
+
+        function sendWA() {
+            const name = document.getElementById('name').value;
+            const car = carInput.options[carInput.selectedIndex].text;
+            const days = daysInput.value;
+            const total = totalDisplay.innerText;
+
+            if(!name) return alert("Please enter your name");
+
+            const waLink = `https://wa.me/6281234567890?text=` + 
+                `*NEW RESERVATION*%0A` +
+                `------------------%0A` +
+                `Name: ${name}%0A` +
+                `Unit: ${car}%0A` +
+                `Duration: ${days} Day(s)%0A` +
+                `Total: ${total}%0A` +
+                `------------------%0A` +
+                `Mohon konfirmasi unit tersedia.`;
+            
+            window.open(waLink, '_blank');
+        }
+    </script>
 </body>
 </html>
