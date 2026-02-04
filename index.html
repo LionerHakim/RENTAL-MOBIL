@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Mobil HST | Nyaman, Aman & Terpercaya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-yellow: #FFD700;
+            --accent-red: #FF3131;
+            --deep-blue: #007BFF;
+            --bg-dark: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #f4f4f4;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Components --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-yellow {
+            background-color: var(--primary-yellow);
+            color: #000;
+        }
+
+        .btn-yellow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        section { padding: 80px 0; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+        }
+
+        .section-title div {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-red);
+            margin: 10px auto;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-content h1 span { color: var(--primary-yellow); }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; color: #ccc; }
+
+        /* --- Car List Section --- */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .car-card:hover {
+            border-color: var(--deep-blue);
+            transform: scale(1.02);
+        }
+
+        .car-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .car-info { padding: 20px; }
+        .car-info h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-yellow); }
+        
+        .car-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        .price-tag {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .price-tag span { color: var(--accent-red); }
+
+        /* --- Booking Form --- */
+        .booking-section { background: #111; border-radius: 30px; padding: 40px; }
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group label { display: block; margin-bottom: 8px; color: var(--primary-yellow); }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* --- Advantages --- */
+        .features { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .feature-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 15px;
+        }
+        .feature-item i { font-size: 3rem; color: var(--deep-blue); margin-bottom: 15px; }
+
+        /* --- Testimonials --- */
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .testi-card { padding: 20px; background: #151515; border-left: 4px solid var(--accent-red); border-radius: 10px; }
+        .stars { color: var(--primary-yellow); margin-bottom: 10px; }
+
+        /* --- Floating WA --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        footer { text-align: center; padding: 40px; background: #000; border-top: 1px solid #222; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>RENTAL MOBIL <span>HST</span></h1>
+                <p>Solusi Perjalanan Nyaman, Aman & Harga Transparan di Kalimantan Selatan</p>
+                <a href="#daftar-mobil" class="btn btn-yellow">Lihat Koleksi Mobil</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-car-side"></i>
+                    <h3>Mobil Terawat</h3>
+                    <p>Unit selalu dalam kondisi prima dan bersih sebelum disewakan.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Sopir Profesional</h3>
+                    <p>Driver berpengalaman dan ramah siap menemani perjalanan Anda.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Layanan 24 Jam</h3>
+                    <p>Booking kapanpun Anda butuh, admin kami siap merespon.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="daftar-mobil">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pilihan Armada</h2>
+                <div></div>
+            </div>
+            
+            <div class="car-grid">
+                <div class="car-card">
+                    <img src="mobil1.jpg" alt="Avanza" class="car-img">
+                    <div class="car-info">
+                        <h3>Toyota Avanza</h3>
+                        <div class="car-meta">
+                            <span><i class="fas fa-users"></i> 7 Kursi</span>
+                            <span><i class="fas fa-cog"></i> Manual/AT</span>
+                        </div>
+                        <div class="price-tag">Mulai <span>Rp 350.000</span> / Hari</div>
+                        <button onclick="pilihMobil('Toyota Avanza', 350000)" class="btn btn-yellow" style="width: 100%;">Sewa Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="mobil2.jpg" alt="Innova" class="car-img">
+                    <div class="car-info">
+                        <h3>Toyota Innova Reborn</h3>
+                        <div class="car-meta">
+                            <span><i class="fas fa-users"></i> 7 Kursi</span>
+                            <span><i class="fas fa-cog"></i> Automatic</span>
+                        </div>
+                        <div class="price-tag">Mulai <span>Rp 600.000</span> / Hari</div>
+                        <button onclick="pilihMobil('Innova Reborn', 600000)" class="btn btn-yellow" style="width: 100%;">Sewa Sekarang</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="mobil3.jpg" alt="Brio" class="car-img">
+                    <div class="car-info">
+                        <h3>Honda Brio</h3>
+                        <div class="car-meta">
+                            <span><i class="fas fa-users"></i> 5 Kursi</span>
+                            <span><i class="fas fa-cog"></i> Manual/AT</span>
+                        </div>
+                        <div class="price-tag">Mulai <span>Rp 300.000</span> / Hari</div>
+                        <button onclick="pilihMobil('Honda Brio', 300000)" class="btn btn-yellow" style="width: 100%;">Sewa Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="container">
+        <div class="booking-section">
+            <div class="section-title">
+                <h2 style="font-size: 1.8rem;">Formulir Booking Cepat</h2>
+            </div>
+            <form id="rentForm" class="booking-form">
+                <div class="form-group">
+                    <label>Pilih Mobil</label>
+                    <select id="selectedCar" required>
+                        <option value="">-- Pilih Mobil --</option>
+                        <option value="Toyota Avanza">Toyota Avanza</option>
+                        <option value="Innova Reborn">Innova Reborn</option>
+                        <option value="Honda Brio">Honda Brio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Durasi (Hari)</label>
+                    <input type="number" id="duration" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Nama Anda</label>
+                    <input type="text" id="userName" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Mulai</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <button type="button" onclick="kirimWA()" class="btn btn-wa" style="width: 100%; font-size: 1.1rem;">
+                        <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Mereka?</h2>
+                <div></div>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Mobilnya wangi dan bersih banget. Pelayanan admin HST sangat cepat!"</p>
+                    <strong style="color:var(--deep-blue)">- Andi, Barabai</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Sopirnya hafal jalan dan cara bawanya enak, gak bikin pusing."</p>
+                    <strong style="color:var(--deep-blue)">- Siska, Banjarmasin</strong>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Harga paling jujur di HST. Gak ada biaya siluman di akhir sewa."</p>
+                    <strong style="color:var(--deep-blue)">- Budi, Pengusaha</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <div class="container">
+            <h2 style="color: var(--primary-yellow);">Rental Mobil HST</h2>
+            <p style="margin: 15px 0;">Visi kami menyediakan transportasi terbaik dengan mengutamakan kepuasan pelanggan.</p>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--accent-red);"></i> Kota Barabai, Hulu Sungai Tengah, Kalimantan Selatan</p>
+            <p><i class="fas fa-phone" style="color: var(--deep-blue);"></i> +62 812-3456-7890</p>
+            <div style="margin-top: 20px; font-size: 0.8rem; color: #555;">
+                &copy; 2026 Rental Mobil HST. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6281234567890" class="floating-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Fungsi saat tombol di card mobil diklik
+        function pilihMobil(namaMobil, harga) {
+            document.getElementById('selectedCar').value = namaMobil;
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Fungsi format WhatsApp
+        function kirimWA() {
+            const mobil = document.getElementById('selectedCar').value;
+            const durasi = document.getElementById('duration').value;
+            const nama = document.getElementById('userName').value;
+            const tanggal = document.getElementById('startDate').value;
+            
+            if(!mobil || !nama || !tanggal) {
+                alert("Mohon lengkapi data booking!");
+                return;
+            }
+
+            const nomorWA = "6281234567890"; // GANTI DENGAN NOMOR WA BISNIS ANDA
+            
+            const pesan = `Halo Rental Mobil HST, saya ingin booking:%0A%0A` +
+                          `*Nama:* ${nama}%0A` +
+                          `*Mobil:* ${mobil}%0A` +
+                          `*Durasi:* ${durasi} Hari%0A` +
+                          `*Tanggal:* ${tanggal}%0A%0A` +
+                          `Mohon info ketersediaan unit, terima kasih.`;
+            
+            window.open(`https://wa.me/${nomorWA}?text=${pesan}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
