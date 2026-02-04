@@ -2,353 +2,392 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HST Rental | Executive Mobility</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Mobil HST | Premium Car Rental Services</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --ios-bg: #000000;
-            --ios-card: rgba(28, 28, 30, 0.7);
-            --ios-blue: #007AFF;
-            --ios-gold: #FFD60A;
-            --ios-red: #FF453A;
-            --glass: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.12);
+            --primary: #FFD700; /* Gold/Yellow */
+            --secondary: #FF3131; /* Racing Red */
+            --accent: #007BFF; /* Electric Blue */
+            --dark: #050505;
+            --surface: #121212;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #FFFFFF;
+            --text-dim: #A0A0A0;
         }
 
-        * { 
-            margin: 0; padding: 0; box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--ios-bg);
-            color: white;
-            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            letter-spacing: -0.02em;
         }
 
-        /* --- iOS Style Navigation --- */
+        h1, h2, h3, .price { font-family: 'Poppins', sans-serif; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; width: 100%; z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 0.5px solid var(--border);
-            padding: 16px 0;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
         }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
+        .logo span { color: var(--text-main); }
 
-        .nav-flex { 
-            display: flex; justify-content: space-between; 
-            align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 24px;
-        }
-
-        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.5px; }
-        .logo span { color: var(--ios-gold); }
-
-        /* --- Hero Section --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+            background: radial-gradient(circle at center, rgba(0,123,255,0.15) 0%, rgba(5,5,5,1) 70%),
+                        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070') center/cover;
             position: relative;
-            padding: 0 20px;
         }
 
-        .hero-video-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.4; z-index: 0;
-        }
+        .hero-content { max-width: 700px; animation: fadeInUp 1s ease; }
+        .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-content h1 span { color: var(--primary); display: block; }
+        .hero-content p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 35px; border-left: 3px solid var(--secondary); padding-left: 20px; }
 
-        .hero-content { position: relative; z-index: 1; max-width: 900px; }
+        /* --- CATALOGUE --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .badge { background: var(--secondary); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
 
-        .hero-content h1 {
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: clamp(1rem, 4vw, 1.4rem);
-            color: #8e8e93;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        /* --- Premium Buttons --- */
-        .btn-ios {
-            background: white;
-            color: black;
-            padding: 16px 32px;
-            border-radius: 99px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-        }
-
-        .btn-ios:hover { transform: scale(1.05); background: var(--ios-gold); }
-
-        /* --- Car Grid (The Apple Watch Face Look) --- */
-        .car-section { padding: 120px 0; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-            padding: 0 24px;
-        }
-
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .car-card {
-            background: var(--ios-card);
-            backdrop-filter: blur(10px);
-            border-radius: 32px; /* iOS Squircle */
-            padding: 24px;
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            position: relative;
+            background: var(--surface);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .car-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        .img-container { position: relative; width: 100%; height: 230px; overflow: hidden; }
+        .car-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .car-card:hover .car-img { scale: 1.1; }
+        
+        .car-details { padding: 30px; }
+        .car-type { color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+        .car-name { font-size: 1.6rem; margin: 5px 0 15px 0; }
+        
+        .specs { display: flex; gap: 15px; margin-bottom: 20px; }
+        .spec-item { background: var(--glass); padding: 8px 12px; border-radius: 10px; font-size: 0.85rem; color: var(--text-dim); border: 1px solid var(--glass-border); }
+
+        .price-box { display: flex; align-items: baseline; gap: 5px; margin-bottom: 25px; }
+        .price { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .unit { color: var(--text-dim); font-size: 0.9rem; }
+
+        /* --- INTERACTIVE BOOKING --- */
+        .booking-wrapper {
+            background: linear-gradient(145deg, #121212, #1a1a1a);
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid var(--glass-border);
+            margin-top: 50px;
+        }
+        .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-dim); }
+        .input-control {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border); border-radius: 12px; color: white;
+            font-size: 1rem; transition: 0.3s;
+        }
+        .input-control:focus { border-color: var(--accent); background: rgba(255,255,255,0.1); }
+
+        .calc-result {
+            background: var(--glass); border-radius: 20px; padding: 30px;
+            border: 1px dashed var(--primary); display: flex; flex-direction: column; justify-content: center;
         }
 
-        .car-card:hover {
-            border-color: var(--ios-blue);
-            background: rgba(44, 44, 46, 0.8);
+        /* --- CTA BUTTONS --- */
+        .btn {
+            padding: 16px 32px; border-radius: 14px; text-decoration: none;
+            font-weight: 700; display: inline-flex; align-items: center; justify-content: center;
+            gap: 10px; transition: 0.3s; cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-primary:hover { background: #fff; transform: scale(1.02); }
+        .btn-wa { background: #25D366; color: white; width: 100%; margin-top: 20px; }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px 0 30px; background: #000; border-top: 1px solid var(--glass-border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+        .footer-logo { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        .footer-link { list-style: none; }
+        .footer-link li { margin-bottom: 12px; color: var(--text-dim); transition: 0.3s; cursor: pointer; }
+        .footer-link li:hover { color: var(--primary); }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .car-image {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            transition: transform 0.5s ease;
-        }
-
-        .car-card:hover .car-image { transform: translateY(-10px) scale(1.05); }
-
-        .car-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
-        .car-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(0, 122, 255, 0.15);
-            color: var(--ios-blue);
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .price-label { font-size: 0.9rem; color: #8e8e93; margin-bottom: 4px; }
-        .price-value { font-size: 1.5rem; font-weight: 700; color: var(--ios-gold); }
-
-        /* --- Advanced Booking Glass Panel --- */
-        .booking-panel {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-            border-radius: 38px;
-            padding: 60px;
-            border: 1px solid var(--border);
-            margin: 60px 24px;
-        }
-
-        .input-ios {
-            background: #2c2c2e;
-            border: none;
-            border-radius: 14px;
-            padding: 18px;
-            color: white;
-            width: 100%;
-            font-size: 1rem;
-            margin-top: 8px;
-            transition: ring 0.3s ease;
-        }
-
-        .input-ios:focus { box-shadow: 0 0 0 3px var(--ios-blue); }
-
-        /* --- Floating WhatsApp iOS style --- */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            width: 64px;
-            height: 64px;
-            border-radius: 20px; /* iOS Icon Shape */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 1001;
-            transition: 0.3s;
-        }
-
-        .wa-float:hover { transform: scale(1.1) rotate(5deg); }
-
-        /* --- Footer --- */
-        footer { padding: 80px 24px; border-top: 0.5px solid var(--border); text-align: center; color: #8e8e93; }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3.2rem; }
-            .grid { grid-template-columns: 1fr; }
-            .booking-panel { padding: 30px 20px; }
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .booking-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-flex">
-            <div class="logo">HST <span>EXCLUSIVE</span></div>
-            <a href="https://wa.me/6282133883181" class="btn-ios" style="padding: 10px 20px; font-size: 0.8rem;">Contact Us</a>
+        <div class="container nav-flex">
+            <div class="logo">HST<span>RENTAL</span></div>
+            <div class="nav-links">
+                <a href="#mobil" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Pesan Sekarang</a>
+            </div>
         </div>
     </nav>
 
     <section class="hero">
-        <div style="position:absolute; top: -10%; left: -10%; width: 40%; height: 40%; background: var(--ios-blue); filter: blur(150px); opacity: 0.2;"></div>
-        
-        <div class="hero-content">
-            <p style="text-transform: uppercase; letter-spacing: 5px; color: var(--ios-gold); margin-bottom: 10px; font-weight: 700;">Hulu Sungai Tengah</p>
-            <h1>Move in <span>Style.</span></h1>
-            <p>Standar baru penyewaan mobil premium. Bersih, Cepat, dan Berkelas.</p>
-            <a href="#catalogue" class="btn-ios">Explore Collection</a>
-        </div>
-    </section>
-
-    <section id="catalogue" class="car-section">
-        <div class="grid">
-            <div class="car-card">
-                <span class="car-tag">Most Popular</span>
-                <img src="mobil1.jpg" alt="Avanza" class="car-image">
-                <h3>Avanza Gen 3</h3>
-                <p style="color: #8e8e93; margin-bottom: 20px;">7-Seater · Manual/AT · 2024</p>
-                <div class="price-label">Daily Rate</div>
-                <div class="price-value">Rp 350.000</div>
-                <button onclick="book('Avanza 2024')" class="btn-ios" style="width:100%; margin-top: 20px; background: var(--ios-blue); color: white;">Book Now</button>
-            </div>
-
-            <div class="car-card">
-                <span class="car-tag" style="background: rgba(255, 69, 58, 0.15); color: var(--ios-red);">Premium Choice</span>
-                <img src="mobil2.jpg" alt="Innova" class="car-image">
-                <h3>Innova Reborn</h3>
-                <p style="color: #8e8e93; margin-bottom: 20px;">7-Seater · AT Luxury · Diesel</p>
-                <div class="price-label">Daily Rate</div>
-                <div class="price-value">Rp 650.000</div>
-                <button onclick="book('Innova Reborn')" class="btn-ios" style="width:100%; margin-top: 20px; background: white; color: black;">Book Now</button>
-            </div>
-
-            <div class="car-card">
-                <span class="car-tag" style="background: rgba(255, 214, 10, 0.15); color: var(--ios-gold);">City Agile</span>
-                <img src="mobil3.jpg" alt="Brio" class="car-image">
-                <h3>Honda Brio RS</h3>
-                <p style="color: #8e8e93; margin-bottom: 20px;">5-Seater · Compact · Sporty</p>
-                <div class="price-label">Daily Rate</div>
-                <div class="price-value">Rp 300.000</div>
-                <button onclick="book('Honda Brio RS')" class="btn-ios" style="width:100%; margin-top: 20px; background: var(--ios-blue); color: white;">Book Now</button>
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge" style="margin-bottom: 15px; display: inline-block;">Premium Rental Experience</span>
+                <h1>Eksplorasi HST Dengan <span>Mobil Berkelas</span></h1>
+                <p>Kami menghadirkan armada terbaru dengan standar kebersihan hotel bintang lima dan driver profesional untuk kenyamanan perjalanan bisnis atau wisata Anda.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#mobil" class="btn btn-primary">Lihat Armada <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://wa.me/6281234567890" class="btn" style="background: var(--glass); color: white; border: 1px solid var(--glass-border);">Hubungi CS Kami</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <div class="booking-panel" id="reserve">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">Quick Reservation</h2>
-            <p style="color: #8e8e93; margin-bottom: 40px;">Lengkapi detail untuk mendapatkan kalkulasi biaya otomatis.</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-                <div>
-                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">SELECT UNIT</label>
-                    <select id="car" class="input-ios">
-                        <option value="350000">Toyota Avanza (350k)</option>
-                        <option value="650000">Innova Reborn (650k)</option>
-                        <option value="300000">Honda Brio RS (300k)</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">DURATION (DAYS)</label>
-                    <input type="number" id="days" class="input-ios" value="1" min="1">
-                </div>
-                <div>
-                    <label style="font-size: 0.8rem; font-weight: 600; color: #8e8e93;">YOUR NAME</label>
-                    <input type="text" id="name" class="input-ios" placeholder="Enter name">
-                </div>
+    <section id="mobil" style="padding: 100px 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Armada Kami</span>
+                <h2>Pilih Kendaraan Anda</h2>
             </div>
 
-            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <p style="font-size: 0.9rem; color: #8e8e93;">Estimated Total</p>
-                    <h3 id="totalDisplay" style="font-size: 2rem; color: var(--ios-gold);">Rp 350.000</h3>
+            <div class="car-grid">
+                <article class="car-card">
+                    <div class="img-container">
+                        <img src="mobil1.jpg" alt="Toyota Avanza" class="car-img">
+                    </div>
+                    <div class="car-details">
+                        <div class="car-type">Family MPV</div>
+                        <h3 class="car-name">Toyota Avanza 2024</h3>
+                        <div class="specs">
+                            <span class="spec-item"><i class="fa fa-user"></i> 7 Seat</span>
+                            <span class="spec-item"><i class="fa fa-gas-pump"></i> Hemat</span>
+                            <span class="spec-item"><i class="fa fa-snowflake"></i> Double AC</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">Rp 350.000</span>
+                            <span class="unit">/ 24 Jam</span>
+                        </div>
+                        <button onclick="setBooking('Toyota Avanza', 350000)" class="btn btn-primary" style="width: 100%;">Pilih Unit</button>
+                    </div>
+                </article>
+
+                <article class="car-card">
+                    <div class="img-container">
+                        <img src="mobil2.jpg" alt="Innova Reborn" class="car-img">
+                    </div>
+                    <div class="car-details">
+                        <div class="car-type">Executive Class</div>
+                        <h3 class="car-name">Innova Reborn</h3>
+                        <div class="specs">
+                            <span class="spec-item"><i class="fa fa-user"></i> 7 Seat</span>
+                            <span class="spec-item"><i class="fa fa-shield-alt"></i> Safety</span>
+                            <span class="spec-item"><i class="fa fa-couch"></i> Luxury</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">Rp 650.000</span>
+                            <span class="unit">/ 24 Jam</span>
+                        </div>
+                        <button onclick="setBooking('Innova Reborn', 650000)" class="btn btn-primary" style="width: 100%;">Pilih Unit</button>
+                    </div>
+                </article>
+
+                <article class="car-card">
+                    <div class="img-container">
+                        <img src="mobil3.jpg" alt="Honda Brio" class="car-img">
+                    </div>
+                    <div class="car-details">
+                        <div class="car-type">City Car</div>
+                        <h3 class="car-name">Honda Brio RS</h3>
+                        <div class="specs">
+                            <span class="spec-item"><i class="fa fa-user"></i> 5 Seat</span>
+                            <span class="spec-item"><i class="fa fa-bolt"></i> Agility</span>
+                            <span class="spec-item"><i class="fa fa-music"></i> Audio</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price">Rp 300.000</span>
+                            <span class="unit">/ 24 Jam</span>
+                        </div>
+                        <button onclick="setBooking('Honda Brio', 300000)" class="btn btn-primary" style="width: 100%;">Pilih Unit</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" style="padding-bottom: 100px;">
+        <div class="container">
+            <div class="booking-wrapper">
+                <div class="booking-grid">
+                    <div>
+                        <h2 style="margin-bottom: 10px;">Hitung Estimasi Sewa</h2>
+                        <p style="color: var(--text-dim); margin-bottom: 30px;">Lengkapi data di bawah untuk mendapatkan rincian biaya instan ke WhatsApp.</p>
+                        
+                        <div class="form-group">
+                            <label>Unit Kendaraan</label>
+                            <select id="carSelect" class="input-control" onchange="calculate()">
+                                <option value="0" data-name="Pilih Mobil">-- Pilih Armada --</option>
+                                <option value="350000" data-name="Toyota Avanza">Toyota Avanza (Rp 350rb)</option>
+                                <option value="650000" data-name="Innova Reborn">Innova Reborn (Rp 650rb)</option>
+                                <option value="300000" data-name="Honda Brio">Honda Brio (Rp 300rb)</option>
+                            </select>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label>Durasi (Hari)</label>
+                                <input type="number" id="days" class="input-control" value="1" min="1" oninput="calculate()">
+                            </div>
+                            <div class="form-group">
+                                <label>Paket Sopir?</label>
+                                <select id="driverService" class="input-control" onchange="calculate()">
+                                    <option value="0">Lepas Kunci (Rp 0)</option>
+                                    <option value="150000">Dengan Sopir (+Rp 150rb)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="custName" class="input-control" placeholder="Contoh: Jefri Rahman">
+                        </div>
+                    </div>
+
+                    <div class="calc-result">
+                        <h3 style="color: var(--primary); margin-bottom: 20px;">Ringkasan Booking</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Unit & Durasi</span>
+                            <span id="res-unit">-</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Layanan Sopir</span>
+                            <span id="res-driver">Rp 0</span>
+                        </div>
+                        <hr style="border: none; border-top: 1px solid var(--glass-border); margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 700;">Total Estimasi</span>
+                            <span id="res-total" style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">Rp 0</span>
+                        </div>
+                        
+                        <button onclick="sendBookingWA()" class="btn btn-wa">
+                            <i class="fab fa-whatsapp"></i> Konfirmasi via WhatsApp
+                        </button>
+                    </div>
                 </div>
-                <button onclick="sendWA()" class="btn-ios" style="background: white; color: black; padding: 20px 45px;">Confirm Booking</button>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 HST Rental Exclusive. Crafted for the Modern Traveler.</p>
-        <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Barabai - Hulu Sungai Tengah - South Borneo</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">HST<span>RENTAL</span></div>
+                    <p style="color: var(--text-dim); line-height: 1.8;">Pusat penyewaan mobil premium di Hulu Sungai Tengah. Kami menjamin unit dalam kondisi terbaik untuk perjalanan yang tak terlupakan.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Layanan</h4>
+                    <ul class="footer-link">
+                        <li>Sewa Harian</li>
+                        <li>Sewa Bulanan</li>
+                        <li>Antar Jemput Bandara</li>
+                        <li>Wedding Car</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Hubungi Kami</h4>
+                    <ul class="footer-link">
+                        <li><i class="fa fa-phone color: var(--primary)"></i> +62 812 3456 7890</li>
+                        <li><i class="fa fa-envelope color: var(--primary)"></i> info@rentalmobilhst.com</li>
+                        <li><i class="fa fa-map-marker-alt color: var(--primary)"></i> Barabai, Kalimantan Selatan</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; color: #333; padding-top: 30px; border-top: 1px solid #111; font-size: 0.8rem;">
+                &copy; 2026 Rental Mobil HST. Build with Passion for Excellence.
+            </div>
+        </div>
     </footer>
 
-    <a href="https://wa.me/6281234567890" class="wa-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script>
-        // Real-time calculation
-        const carInput = document.getElementById('car');
-        const daysInput = document.getElementById('days');
-        const totalDisplay = document.getElementById('totalDisplay');
-
-        function updatePrice() {
-            const total = carInput.value * daysInput.value;
-            totalDisplay.innerText = 'Rp ' + total.toLocaleString('id-ID');
-        }
-
-        carInput.addEventListener('change', updatePrice);
-        daysInput.addEventListener('input', updatePrice);
-
-        function book(carName) {
-            document.getElementById('reserve').scrollIntoView({ behavior: 'smooth' });
-            const select = document.getElementById('car');
-            for(let i=0; i < select.options.length; i++) {
-                if(select.options[i].text.includes(carName)) {
+        function setBooking(name, price) {
+            const select = document.getElementById('carSelect');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].getAttribute('data-name') === name) {
                     select.selectedIndex = i;
-                    updatePrice();
                     break;
                 }
             }
+            calculate();
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function sendWA() {
-            const name = document.getElementById('name').value;
-            const car = carInput.options[carInput.selectedIndex].text;
-            const days = daysInput.value;
-            const total = totalDisplay.innerText;
+        function calculate() {
+            const pricePerDay = parseInt(document.getElementById('carSelect').value);
+            const days = parseInt(document.getElementById('days').value) || 1;
+            const driverPrice = parseInt(document.getElementById('driverService').value);
+            const carName = document.getElementById('carSelect').options[document.getElementById('carSelect').selectedIndex].getAttribute('data-name');
 
-            if(!name) return alert("Please enter your name");
+            const total = (pricePerDay + driverPrice) * days;
 
-            const waLink = `https://wa.me/6281234567890?text=` + 
-                `*NEW RESERVATION*%0A` +
-                `------------------%0A` +
-                `Name: ${name}%0A` +
-                `Unit: ${car}%0A` +
-                `Duration: ${days} Day(s)%0A` +
-                `Total: ${total}%0A` +
-                `------------------%0A` +
-                `Mohon konfirmasi unit tersedia.`;
-            
-            window.open(waLink, '_blank');
+            document.getElementById('res-unit').innerText = carName + ' (' + days + ' Hari)';
+            document.getElementById('res-driver').innerText = 'Rp ' + (driverPrice * days).toLocaleString();
+            document.getElementById('res-total').innerText = 'Rp ' + total.toLocaleString();
+        }
+
+        function sendBookingWA() {
+            const name = document.getElementById('custName').value;
+            const car = document.getElementById('carSelect').options[document.getElementById('carSelect').selectedIndex].getAttribute('data-name');
+            const days = document.getElementById('days').value;
+            const driver = document.getElementById('driverService').options[document.getElementById('driverService').selectedIndex].text;
+            const total = document.getElementById('res-total').innerText;
+
+            if(!name || car === "Pilih Mobil") {
+                alert("Silakan lengkapi nama dan pilih unit mobil.");
+                return;
+            }
+
+            const phone = "6281234567890"; // GANTI DENGAN NOMOR ANDA
+            const msg = `*BOOKING RENTAL MOBIL HST*%0A` +
+                        `----------------------------%0A` +
+                        `*Nama:* ${name}%0A` +
+                        `*Unit:* ${car}%0A` +
+                        `*Durasi:* ${days} Hari%0A` +
+                        `*Layanan:* ${driver}%0A` +
+                        `*Total Estimasi:* ${total}%0A` +
+                        `----------------------------%0A` +
+                        `Halo admin, saya ingin konfirmasi booking ini.`;
+
+            window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
         }
     </script>
 </body>
